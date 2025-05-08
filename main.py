@@ -5,6 +5,8 @@ Created on Sun May  4 16:34:17 2025
 @author: JTS
 """
 
+PROXY = "https://api.cors.lol/?url="
+
 from pyscript import fetch
 
 import pyodide
@@ -45,7 +47,7 @@ GET = UrlCache()
 
 def getd_temp(date, station = 888, dynamic = True): 
     url = (
-        "https://corsproxy.io/?url=https://climate.weather.gc.ca/climate_data/daily_data_e.html?"
+        PROXY + "https://climate.weather.gc.ca/climate_data/daily_data_e.html?"
         f"StationID={station}&Prov=BC&urlExtension=_e.html&Month={date.month}"
         f"&Year={date.year}&optProxType=city"
     )
@@ -151,7 +153,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
         return GETH_TEMP_CACHE[(date, station, feature)]
     
     url = (
-        "https://corsproxy.io/?url=https://climate.weather.gc.ca/climate_data/hourly_data_e.html?"
+        PROXY + "https://climate.weather.gc.ca/climate_data/hourly_data_e.html?"
         f"StationID={station}&Month={date.month}&Day={date.day}&Year={date.year}"
     )
     
