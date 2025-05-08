@@ -327,7 +327,7 @@ print('1')
 prealys = [slavgh_pred(t, feature = 3) for t in realxs]
 print('2')
 
-predxs = [now + da.timedelta(hours = i) for i in range(-12, 24)]
+predxs = [now + da.timedelta(hours = i) for i in range(-1, 24)]
 tpredys = [geth_temp(t, feature = 0) for t in predxs]
 print('3')
 ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
