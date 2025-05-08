@@ -52,7 +52,7 @@ def getd_temp(date, station = 888, dynamic = True):
     
     fissue = False
     
-    soup = BeautifulSoup(GET(url), 'html.parser')
+    soup = BeautifulSoup(GET(url).read().decode(), 'html.parser')
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.day - 1]
@@ -157,8 +157,8 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
     
     fissue = False
     
-    soup = BeautifulSoup(GET(url), 'html.parser')
-    print(GET(url))
+    soup = BeautifulSoup(GET(url).read().decode(), 'html.parser')
+    print(GET(url).read().decode())
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.hour]
