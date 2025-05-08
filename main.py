@@ -163,6 +163,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
     try: 
         row = table.findChildren('tr')[date.hour]
     except AttributeError: # Too far back in time
+        print(date, table)
         raise RuntimeError("Attempted to retrieve data from a timestep too far"
                            " back in time. ")
     except IndexError: 
