@@ -318,11 +318,11 @@ from pyscript import display
 
 now = hournow()
 
-# realxs = [now - da.timedelta(hours = i) for i in range(1, 13)]
-# trealys = [geth_temp(t, feature = 0) for t in realxs]
-# print('1')
-# prealys = [slavgh_pred(t, feature = 3) for t in realxs]
-# print('2')
+realxs = [now - da.timedelta(hours = i) for i in range(1, 13)]
+trealys = [geth_temp(t, feature = 0) for t in realxs]
+print('1')
+prealys = [slavgh_pred(t, feature = 3) for t in realxs]
+print('2')
 
 # predxs = [now + da.timedelta(hours = i) for i in range(24)]
 # tpredys = [geth_temp(t, feature = 0) for t in predxs]
@@ -330,10 +330,10 @@ now = hournow()
 # ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
 # print('4')
 
-print(geth_temp(now - da.timedelta(hours = 10)))
+# print(geth_temp(now - da.timedelta(hours = 10)))
 
 figure, axes = plt.subplots(1, 2)
 
-axes[0, 0].plot(realxs, trealys)
+axes[0].plot(realxs, trealys)
 
 
