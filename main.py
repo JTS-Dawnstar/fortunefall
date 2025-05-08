@@ -5,6 +5,8 @@ Created on Sun May  4 16:34:17 2025
 @author: JTS
 """
 
+from pyscript import fetch
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup, Tag, NavigableString
 
@@ -24,10 +26,11 @@ KEY = ['temp', 'dew-point', 'rel-humid', 'precip']
 class UrlCache: 
     def __init__(self): 
         self.cache = dict()
-    def __call__(self, url): 
+    async def __call__(self, url): 
         if url not in self.cache.keys(): 
-            with urlopen(url) as page: 
-                self.cache[url] = page.read().decode('utf-8')
+            # with urlopen(url) as page: 
+            #     self.cache[url] = page.read().decode('utf-8')
+            self.cache[url] = await fetch(url).text()
         return self.cache[url]
     def uncache(self, url): 
         return self.cache.pop(url)
