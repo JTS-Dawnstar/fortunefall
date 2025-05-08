@@ -337,7 +337,9 @@ print('4')
 
 figure, axes = plt.subplots(1, 2)
 
-axes[0].plot(realxs, trealys)
+axes[0].bar(realxs, trealys)
+
+axes[1].bar(realxs, prealys)
 
 display(figure, target = "mpl")
 
