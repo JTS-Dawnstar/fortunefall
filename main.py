@@ -158,6 +158,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
     fissue = False
     
     soup = BeautifulSoup(GET(url), 'html.parser')
+    print(GET(url))
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.hour]
@@ -317,17 +318,19 @@ from pyscript import display
 
 now = hournow()
 
-realxs = [now - da.timedelta(hours = i) for i in range(1, 13)]
-trealys = [geth_temp(t, feature = 0) for t in realxs]
-print('1')
-prealys = [slavgh_pred(t, feature = 3) for t in realxs]
-print('2')
+# realxs = [now - da.timedelta(hours = i) for i in range(1, 13)]
+# trealys = [geth_temp(t, feature = 0) for t in realxs]
+# print('1')
+# prealys = [slavgh_pred(t, feature = 3) for t in realxs]
+# print('2')
 
-predxs = [now + da.timedelta(hours = i) for i in range(24)]
-tpredys = [geth_temp(t, feature = 0) for t in predxs]
-print('3')
-ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
-print('4')
+# predxs = [now + da.timedelta(hours = i) for i in range(24)]
+# tpredys = [geth_temp(t, feature = 0) for t in predxs]
+# print('3')
+# ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
+# print('4')
+
+print(geth_temp(now - da.timedelta(hours = 10)))
 
 figure, axes = plt.subplots(1, 2)
 
