@@ -193,7 +193,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
             if (date, station, feature) not in GETH_TEMP_CACHE.keys(): 
                 GETH_TEMP_CACHE[(date, station, feature)] = float(cell.contents[0])
 
-            print(date, float(cell.contents[0]))
+            # print(date, float(cell.contents[0]))
             
             return float(cell.contents[0])
         elif isinstance(cell.contents[0], Tag): 
@@ -327,11 +327,11 @@ print('1')
 prealys = [slavgh_pred(t, feature = 3) for t in realxs]
 print('2')
 
-# predxs = [now + da.timedelta(hours = i) for i in range(24)]
-# tpredys = [geth_temp(t, feature = 0) for t in predxs]
-# print('3')
-# ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
-# print('4')
+predxs = [now + da.timedelta(hours = i) for i in range(24)]
+tpredys = [geth_temp(t, feature = 0) for t in predxs]
+print('3')
+ppredys = [slavgh_pred(t, feature = 3) for t in predxs]
+print('4')
 
 # print(geth_temp(now - da.timedelta(hours = 10)))
 
@@ -339,4 +339,5 @@ figure, axes = plt.subplots(1, 2)
 
 axes[0].plot(realxs, trealys)
 
+print('we made it')
 
