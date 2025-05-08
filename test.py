@@ -1,7 +1,7 @@
 from pyscript import fetch
 
 
-response = await fetch("https://example.com")
+response = await fetch("https://corsproxy.io/?url=https://example.com")
 if response.ok:
     data = await response.text()
 else:
