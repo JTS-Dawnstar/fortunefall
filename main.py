@@ -338,7 +338,7 @@ print('4')
 figure, axes = plt.subplots(1, 2)
 
 axes[0].plot(realxs, trealys)
-axes[0].plt(predxs, tpredys)
+axes[0].plot(predxs, tpredys)
 
 axes[1].plot(realxs, prealys)
 axes[1].plot(predxs, ppredys)
