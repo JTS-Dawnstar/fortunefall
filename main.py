@@ -34,7 +34,7 @@ class UrlCache:
         if url not in self.cache.keys(): 
             # with urlopen(url) as page: 
             #     self.cache[url] = page.read().decode('utf-8')
-            self.cache[url] = pyodide.http.open_url(url)
+            self.cache[url] = pyodide.http.open_url(url).read()
         return self.cache[url]
     def uncache(self, url): 
         return self.cache.pop(url)
@@ -52,7 +52,7 @@ def getd_temp(date, station = 888, dynamic = True):
     
     fissue = False
     
-    soup = BeautifulSoup(GET(url).read(), 'html.parser')
+    soup = BeautifulSoup(GET(url), 'html.parser')
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.day - 1]
@@ -157,8 +157,8 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
     
     fissue = False
     
-    soup = BeautifulSoup(GET(url).read(), 'html.parser')
-    print(GET(url).read())
+    soup = BeautifulSoup(GET(url), 'html.parser')
+    print(GET(url))
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.hour]
@@ -192,6 +192,8 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
             # Success. Finally. 
             if (date, station, feature) not in GETH_TEMP_CACHE.keys(): 
                 GETH_TEMP_CACHE[(date, station, feature)] = float(cell.contents[0])
+
+            print(float(cell.contents[0]))
             
             return float(cell.contents[0])
         elif isinstance(cell.contents[0], Tag): 
