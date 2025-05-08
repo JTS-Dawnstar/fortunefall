@@ -7,6 +7,8 @@ Created on Sun May  4 16:34:17 2025
 
 from pyscript import fetch
 
+import asyncio
+
 from urllib.request import urlopen
 from bs4 import BeautifulSoup, Tag, NavigableString
 
@@ -26,11 +28,15 @@ KEY = ['temp', 'dew-point', 'rel-humid', 'precip']
 class UrlCache: 
     def __init__(self): 
         self.cache = dict()
-    async def __call__(self, url): 
+    async def get_url(self, url): 
+        return await fetch(url).text()
+    def __call__(self, url): 
         if url not in self.cache.keys(): 
             # with urlopen(url) as page: 
             #     self.cache[url] = page.read().decode('utf-8')
-            self.cache[url] = await fetch(url).text()
+            loop = asyncio.get_running_loop()
+            a = asyncio.ensure_future(self.get_url(url), loop = loop)
+            self.cache[url] = a.result()
         return self.cache[url]
     def uncache(self, url): 
         return self.cache.pop(url)
