@@ -158,7 +158,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
     fissue = False
     
     soup = BeautifulSoup(GET(url), 'html.parser')
-    print(GET(url))
+    # print(GET(url))
     table = soup.find('tbody')
     try: 
         row = table.findChildren('tr')[date.hour]
