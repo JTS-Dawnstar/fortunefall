@@ -339,5 +339,5 @@ figure, axes = plt.subplots(1, 2)
 
 axes[0].plot(realxs, trealys)
 
-print('we made it')
+display(figure, target = "mpl")
 
