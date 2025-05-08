@@ -193,7 +193,7 @@ def geth_temp(date, station = 888, dynamic = True, feature = 0): # date is datet
             if (date, station, feature) not in GETH_TEMP_CACHE.keys(): 
                 GETH_TEMP_CACHE[(date, station, feature)] = float(cell.contents[0])
 
-            print(float(cell.contents[0]))
+            print(date, float(cell.contents[0]))
             
             return float(cell.contents[0])
         elif isinstance(cell.contents[0], Tag): 
