@@ -5,9 +5,9 @@ Created on Sun May  4 16:34:17 2025
 @author: JTS
 """
 
-PROXY = "https://api.cors.lol/?url="
+# PROXY = "https://api.cors.lol/?url="
 # PROXY = "https://proxy.corsfix.com/?"
-# PROXY = "https://proxy.cors.sh/"
+PROXY = "https://proxy.cors.sh/"
 
 from pyscript import fetch
 
